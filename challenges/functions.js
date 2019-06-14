@@ -36,7 +36,13 @@ function greeting(firstName, lastName) {
 
 // ==== Closures ====
 
-// Explain in your own words why `nestedfunction()` can access the variable `internal`.
+// Explain in your own words why `nestedFunction()` can access the variable `internal`.
+
+/*
+  The reason why `nestedFunction()` can access the variable `internal` is because it is within the local scope.
+  As long as they are nested, the function will look "outward", outside the scope chain, to find the variable 
+  and be able to access it.
+*/
 
 // Explanation:
 

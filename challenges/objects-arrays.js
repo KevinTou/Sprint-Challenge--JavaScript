@@ -128,8 +128,12 @@ const graduates = [
 /* Request 1: Create a new array called universities that contains all the universities in the graduates array.  
 
 Once you have the new array created, sort the universities alphabetically and log the result. */
-const universities = [];
-console.log(universities);
+const universities = graduates
+  .map(grad => {
+    return grad.university;
+  })
+  .sort();
+console.log("universities: ", universities);
 
 /* Request 2: Create a new array called contactInfo that contains both first name and email of each student. 
 
@@ -137,12 +141,16 @@ The resulting contact information should have a space between the first name and
 Name email@example.com
 
 Log the result of your new array. */
-const contactInfo = [];
-console.log(contactInfo);
+const contactInfo = graduates.map(grad => {
+  return `${grad.first_name} ${grad.email}`;
+});
+console.log("contactInfo: ", contactInfo);
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called uni that contains them all. Log the result. */
-const uni = [];
-console.log(uni);
+const uni = graduates.filter(grad => {
+  return grad.university.includes("Uni");
+});
+console.log("Uni: ", uni);
 
 // ==== ADVANCED Array Methods ====
 
@@ -217,7 +225,12 @@ The zoo wants to display both the scientific name and the animal name in front o
 
 */
 const animalNames = [];
-console.log(animalNames);
+zooAnimals.forEach(animal => {
+  animalNames.push(
+    `Name: ${animal.animal_name}, Scientific: ${animal.scientific_name}.`
+  );
+});
+console.log("animalNames: ", animalNames);
 
 /* Request 2: .map()    
 
@@ -225,24 +238,30 @@ The zoos need a list of all their animal's names (names only, not scientific) co
 
 */
 
-const lowerCase = [];
-console.log(lowerCase);
+const lowerCase = zooAnimals.map(animal => {
+  return animal.animal_name.toLowerCase();
+});
+console.log("lowerCase: ", lowerCase);
 
 /* Request 3: .filter() 
 
 The zoos are concenred about animals with a lower population count. Find out which animals have a population less than 5.
 
 */
-const lowerPopulation = [];
-console.log(lowerPopulation);
+const lowerPopulation = zooAnimals.filter(animal => {
+  return animal.population < 5;
+});
+console.log("lowerPopulation: ", lowerPopulation);
 
 /* Request 4: .reduce() 
 
 The zoos need to know their total animal population across the United States.  Find the total population from all the zoos using the .reduce() method.
 
 */
-const populationTotal = 0;
-console.log(populationTotal);
+const populationTotal = zooAnimals.reduce((acc, current) => {
+  return acc + current.population;
+}, 0);
+console.log("populationTotal: ", populationTotal);
 
 /* 
 
